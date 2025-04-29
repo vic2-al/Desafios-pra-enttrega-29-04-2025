@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=   , initial-scale=1.0">
+    <title>Document</title>
+    <STyle>
+        body {
+            fron-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            color: #333;
+            font-size: 20px;
+            
+        }
+        #contador {
+      font-size: 48px;
+      margin: 20px 0;
+    }
+
+    button {
+      font-size: 18px;
+      margin: 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+      
+    }
+    #resetBtn:hover {
+        background-color: #c0392b;
+
+    }
+
+
+
+
+
+
+
+    </STyle>
+</head>
+<body>
+    <div class="container">
+        <h1>Contador de Cliques</h1>
+        <div id="contador">0</div>
+        <button id="incrementBtn">Clique aqui</button>
+        <button id="resetBtn">Zerar</button>
+        <button id="decrementBtn">Desfazer</button>
+
+    </div>
+    <script>
+        let contador = 0;
+        const contadorElement = document.getElementById('contador');
+        const incrementBtn = document.getElementById('incrementBtn');
+        const resetBtn = document.getElementById('resetBtn');
+
+// Função para atualizar o contador
+function updateCounter() {
+            counterElement.textContent = count;
+        }
+
+        // Evento de clique no botão principal
+        clickBtn.addEventListener('click', () => {
+            count++;
+            updateCounter();
+        });
+
+        // Evento de clique no botão de reset
+        resetBtn.addEventListener('click', () => {
+            count = 0;
+            updateCounter();
+        });
+
+        // Inicializa o contador
+        updateCounter();
+
+
+
+    </script>
+    
+</body>
+</html>           
