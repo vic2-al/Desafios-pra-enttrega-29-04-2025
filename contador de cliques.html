@@ -46,6 +46,7 @@
 <body>
     <div class="container">
         <h1>Contador de Cliques</h1>
+        <hr>
         <div id="contador">0</div>
         <button id="incrementBtn">Clique aqui</button>
         <button id="resetBtn">Zerar</button>
@@ -53,13 +54,13 @@
 
     </div>
     <script>
-        let contador = 0;
+        let contador = "0"
         const contadorElement = document.getElementById('contador');
         const incrementBtn = document.getElementById('incrementBtn');
         const resetBtn = document.getElementById('resetBtn');
 
 // Função para atualizar o contador
-function updateCounter() {
+        function updateCounter() {
             counterElement.textContent = count;
         }
 
