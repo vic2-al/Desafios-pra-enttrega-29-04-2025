@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saudação Personalizada</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #f0f3f8 0%, #2a5298 100%);
+            color: rgb(255, 252, 252);
+            text-align: center;
+            transition: background 0.5s ease;
+        }
+        
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        .time {
+            font-size: 5rem;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .date {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+        
+    
+        .name-input {
+            margin-top: 30px;
+        }
+        
+        input {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            width: 70%;
+            max-width: 300px;
+            text-align: center;
+            background-color: rgba(248, 238, 238, 0.74);
+            color: white;
+            outline: none;
+        }
+        
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="time" id="time">00:00:00</div>
+        <div class="date" id="date">Segunda-feira, 1 de Janeiro de 2025</div>
+        
+        <div class="emoji" id="emoji">👋</div>
+        <div class="greeting" id="greeting">Olá, seja bem-vindo!</div>
+        
+        <div class="name-input">
+            <input type="text" id="nameInput" placeholder="Digite seu nome">
+        </div>
+    </div>
+
+    <script>
+        // Elementos DOM
+        const timeElement = document.getElementById('time');
+        const dateElement = document.getElementById('date');
+        const greetingElement = document.getElementById('greeting');
+        const emojiElement = document.getElementById('emoji');
+        const nameInput = document.getElementById('nameInput');
+        const body = document.body;
+        
+        // Nome do usuário (armazenado localmente)
+        let userName = localStorage.getItem('userName') || '';
+        
+        // Atualizar hora e saudação
+        function updateTime() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            
+            // Formatar hora
+            timeElement.textContent = `${hours}:${minutes}:${seconds}`;
+            
+            // Formatar data
+            const options = { 
+                weekday: 'long', 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric' 
+            };
+            dateElement.textContent = now.toLocaleDateString('pt-BR', options);
+            
+            // Determinar saudação com base no horário
+            let greeting = '';
+            let bgGradient = '';
+            
+            if (hours >= 5 && hours < 12) {
+                greeting = 'Bom dia';
+               
+                bgGradient = 'linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%)';
+            } else if (hours >= 12 && hours < 18) {
+                greeting = 'Boa tarde';
+               
+                bgGradient = 'linear-gradient(135deg, #4b6cb7 0%, #182848 100%)';
+            } else {
+                greeting = 'Boa noite';
+              
+                bgGradient = 'linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)';
+            }
+            
+            // Personalizar com o nome do usuário
+            if (userName) {
+                greeting += `, ${userName}!`;
+            } else {
+                greeting += '!';
+            }
+            
+            // Atualizar elementos
+            greetingElement.textContent = greeting;
+
+            body.style.background = bgGradient;
+        }
+        
+        // Evento de input para o nome
+        nameInput.addEventListener('input', (e) => {
+            userName = e.target.value.trim();
+            localStorage.setItem('userName', userName);
+            updateTime();
+        });
+        
+        // Carregar nome salvo
+        if (userName) {
+            nameInput.value = userName;
+        }
+        
+        // Atualizar a cada segundo
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
+</head>
+<body>
+    
+</body>
+</html>
+<!-- fron Saudacao personalizada com horario  -->
